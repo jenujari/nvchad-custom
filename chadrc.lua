@@ -8,24 +8,7 @@ M.ui = {
     theme = "ayu-dark"
 }
 
-M.plugins = {
-    user = require "custom.plugins",
-    override = {
-      ["nvim-treesitter/nvim-treesitter"] = {
-          ensure_installed = {"html", "css"}
-      },
-      ["williamboman/mason.nvim"] = {
-          ensure_installed = { 
-          -- lua stuff
-          "lua-language-server", "stylua",
-          -- web dev
-          "css-lsp", "html-lsp", "typescript-language-server", "emmet-ls", "json-lsp", 
-          -- go lang
-          "gopls",
-        }
-      }
-    }
-}
+M.plugins = require "custom.plugins"
 
 M.mappings = require "custom.mappings"
 
