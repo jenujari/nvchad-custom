@@ -14,15 +14,15 @@ vim.o.copyindent = true
 vim.o.ut = 1000
 vim.o.history = 500
 vim.o.foldlevelstart = 10
+vim.o.foldenable = true
+vim.o.foldcolumn = '1'
 
 vim.cmd([[
 set path+=**
 set encoding=utf-8
-set nofoldenable
 set cursorline
 set t_Co=256
 set showmatch
-set foldcolumn=1
 set mat=2
 set ruler
 set hidden
@@ -41,8 +41,6 @@ filetype plugin on
 
 highlight! link TermCursor Cursor
 highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
-
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 ]])
 
 vim.cmd([[
@@ -50,8 +48,8 @@ command! MakeTags !ctags -R --exclude=.git --exclude=node_modules --exclude=vend
 command! -nargs=* Wrap set wrap linebreak nolist
 ]])
 
---Visual mode pressing * or # searches for the current selection
---Super useful! From an idea by Michael Naumann
+-- Visual mode pressing * or # searches for the current selection
+-- Super useful! From an idea by Michael Naumann
 vim.cmd([[
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
@@ -88,6 +86,12 @@ require('telescope').setup {
         }
     }
 }
+
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('dap')
 
+require('ufo').setup({
+    provider_selector = function(bufnr, filetype, buftype)
+        return {'treesitter', 'indent'}
+    end
+})

@@ -49,6 +49,24 @@ M.general = {
                 silent = true
             }
         },
+        ["zR"] = {
+            require('ufo').openAllFolds,
+            "Open all folds",
+            opts = {
+                nowait = true,
+                noremap = true,
+                silent = true
+            }
+        },
+        ["zM"] = {
+            require('ufo').closeAllFolds,
+            "Close all folds",
+            opts = {
+                nowait = true,
+                noremap = true,
+                silent = true
+            }
+        }
     },
     i = {
         ["<A-j>"] = {
@@ -68,7 +86,7 @@ M.general = {
                 noremap = true,
                 silent = true
             }
-        },
+        }
     },
     v = {
         ["<A-j>"] = {
@@ -106,7 +124,7 @@ M.general = {
                 noremap = true,
                 silent = true
             }
-        },
-    },
+        }
+    }
 }
 return M
