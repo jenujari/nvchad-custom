@@ -66,6 +66,15 @@ M.general = {
                 noremap = true,
                 silent = true
             }
+        },
+        ["<F8>"] = {
+            "<CMD>TagbarToggle<CR>",
+            "Open Tags Bar",
+            opts = {
+                nowait = true,
+                noremap = true,
+                silent = true
+            }
         }
     },
     i = {

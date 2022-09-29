@@ -14,3 +14,14 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities
     }
 end
+
+lspconfig.emmet_ls.setup({
+    filetypes = {'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less'},
+    init_options = {
+        html = {
+            options = {
+                ["bem.enabled"] = true
+            }
+        }
+    }
+})

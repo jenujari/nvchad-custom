@@ -5,7 +5,7 @@ local M = {}
 -- example of changing theme:
 
 M.ui = {
-    theme = "ayu-dark"
+    theme = "palenight"
 }
 
 M.plugins = require "custom.plugins"
