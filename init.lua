@@ -89,7 +89,7 @@ require('telescope').load_extension('fzf')
 require('telescope').load_extension('dap')
 
 require('ufo').setup({
-    provider_selector = function(bufnr, filetype, buftype)
+    provider_selector = function()
         return {'treesitter', 'indent'}
     end
 })
