@@ -1,7 +1,14 @@
 -- custom/plugins/init.lua has to return a table
 -- THe plugin name is github user or organization name/reponame
--- ["williamboman/mason-lspconfig.nvim"] = {},
+local overrides = require "custom.plugins.overrides"
+
 return {
+    ["neovim/nvim-lspconfig"] = {
+      config = function()
+        require "plugins.configs.lspconfig"
+        require "custom.plugins.lspconfig"
+      end
+    },
     ["jose-elias-alvarez/null-ls.nvim"] = {
         after = "nvim-lspconfig",
         config = function()
@@ -9,18 +16,15 @@ return {
         end
     },
     ["williamboman/mason.nvim"] = {
-        override_options = {
-            ensure_installed = {"lua-language-server", "css-lsp", "html-lsp", "json-lsp", "emmet-ls",
-                                "typescript-language-server", "gopls"}
-        }
+        override_options = overrides.mason
     },
-    ["neovim/nvim-lspconfig"] = {
-        config = function()
-            require "plugins.configs.lspconfig"
-            require "custom.plugins.lspconfig"
-        end
+    ["nvim-treesitter/nvim-treesitter"] = {
+      override_options = overrides.treesitter,
     },
-    -- ["NvChad/nvim-colorizer.lua"] = false,
+    ["kyazdani42/nvim-tree.lua"] = {
+      override_options = overrides.nvimtree,
+    },
+    ["williamboman/mason-lspconfig.nvim"] = {},
     ["junegunn/fzf.vim"] = {},
     ["drewtempelmeyer/palenight.vim"] = {},
     ["majutsushi/tagbar"] = {},
@@ -49,6 +53,6 @@ return {
         override_options = {
             max_jobs = 5
         }
-    }
+    },
 }
 

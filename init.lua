@@ -1,6 +1,7 @@
 -- example file i.e lua/custom/init.lua
 -- load your options globals, autocmds here or anything .__.
 -- you can even override default options here (core/options.lua)
+-- enable some nvchad disabled builtin vim plugins
 vim.o.guifont = "MesloLGL Nerd Font:h12"
 vim.o.rnu = true
 vim.o.scrolloff = 8
@@ -17,6 +18,29 @@ vim.o.foldlevelstart = 10
 vim.o.foldenable = true
 vim.o.foldcolumn = '1'
 
+local enable_providers = {
+  "node_provider",
+}
+
+for _, plugin in pairs(enable_providers) do
+  vim.g["loaded_" .. plugin] = nil
+  vim.cmd("runtime " .. plugin)
+end
+
+
+local default_plugins = {
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "matchit",
+  "ftplugin",
+}
+
+for _, plugin in pairs(default_plugins) do
+  vim.g["loaded_" .. plugin] = nil
+end
+
 vim.cmd([[
 set path+=**
 set encoding=utf-8
@@ -30,10 +54,14 @@ set noswapfile
 set nobackup
 set nowritebackup
 set autoread
+set nocp
 set wildignore+=**/vendor/**
 set wildignore+=**/node_modules/**
 set wildignore+=**/.git/**
 set wildignore+=**/tags/**
+
+filetype plugin indent on
+
 highlight! link TermCursor Cursor
 ]])
 
@@ -68,6 +96,21 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 ]])
+
+vim.cmd([[
+augroup VimStartup
+  au!
+  au VimEnter * if expand("%") == "" | e . | endif
+augroup END
+]])
+
+local autocmd = vim.api.nvim_create_autocmd
+
+-- Auto resize panes when resizing nvim window
+autocmd("VimResized", {
+  pattern = "*",
+  command = "tabdo wincmd =",
+})
 
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
