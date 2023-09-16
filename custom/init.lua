@@ -69,4 +69,3 @@ vim.cmd [[
     set guifont=CaskaydiaCove\ Nerd\ Font:h14:cANSI:qDRAFT
   endif 
 ]]
--- vim.opt.guifont = { "CaskaydiaCove Nerd Font", ":h14" }

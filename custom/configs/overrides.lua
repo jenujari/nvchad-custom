@@ -19,6 +19,8 @@ M.treesitter = {
     "json",
     "git_config",
     "gitignore",
+    "regex",
+    "bash",
   },
   indent = {
     enable = true,

@@ -83,6 +83,49 @@ local plugins = {
     opts = {},
     lazy = false,
   },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require "custom.configs.noice"
+    end,
+  },
+  {
+    "gbprod/yanky.nvim",
+    lazy = true,
+    config = function()
+      require("yanky").setup {
+        ring = {
+          history_length = 100,
+          storage = "shada",
+          sync_with_numbered_registers = true,
+          cancel_event = "update",
+          ignore_registers = { "_" },
+        },
+        system_clipboard = {
+          sync_with_ring = true,
+        },
+        highlight = {
+          on_put = true,
+          on_yank = true,
+          timer = 500,
+        },
+      }
+
+      require("telescope").load_extension "yank_history"
+    end,
+  },
 }
 
 return plugins
