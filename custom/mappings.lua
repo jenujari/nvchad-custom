@@ -4,16 +4,16 @@ local M = {}
 M.general = {
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
-    ["<leader><"] = { ":m .+1<CR>==", "move selected lines down", opts = { remap = false } },
-    ["<leader>>"] = { ":m .-2<CR>==", "move selected lines up", opts = { remap = false } },
+    ["<leader>lk"] = { ":m .+1<CR>==", "move selected lines down", opts = { remap = false } },
+    ["<leader>lo"] = { ":m .-2<CR>==", "move selected lines up", opts = { remap = false } },
   },
   i = {
-    ["<leader><"] = { "<Esc>:m .+1<CR>==gi", "move selected lines down", opts = { remap = false } },
-    ["<leader>>"] = { "<Esc>:m .-2<CR>==gi", "move selected lines up", opts = { remap = false } },
+    ["<C-l>k"] = { "<Esc>:m .+1<CR>==gi", "move selected lines down", opts = { remap = false } },
+    ["<C-l>o"] = { "<Esc>:m .-2<CR>==gi", "move selected lines up", opts = { remap = false } },
   },
   v = {
-    ["<leader><"] = { ":m '>+1<CR>gv=gv", "move selected lines down", opts = { remap = false } },
-    ["<leader>>"] = { ":m '<-2<CR>gv=gv", "move selected lines up", opts = { remap = false } },
+    ["<leader>lk"] = { ":m '>+1<CR>gv=gv", "move selected lines down", opts = { remap = false } },
+    ["<leader>lo"] = { ":m '<-2<CR>gv=gv", "move selected lines up", opts = { remap = false } },
   },
 }
 
@@ -32,6 +32,12 @@ M.dap = {
         sidebar.open()
       end,
       "Open debugging sidebar",
+    },
+    ["<leader>dui"] = {
+      function()
+        require("dapui").toggle()
+      end,
+      "Toggle debug ui",
     },
   },
 }

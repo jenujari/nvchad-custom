@@ -54,6 +54,13 @@ local plugins = {
     end,
   },
   {
+    "rcarriga/nvim-dap-ui",
+    dependencies = "mfussenegger/nvim-dap",
+    init = function()
+      require("dapui").setup()
+    end,
+  },
+  {
     "dreamsofcode-io/nvim-dap-go",
     ft = "go",
     dependencies = "mfussenegger/nvim-dap",
@@ -74,6 +81,34 @@ local plugins = {
     end,
   },
   {
+    "echasnovski/mini.starter",
+    version = "*",
+    lazy = false,
+    config = function()
+      require("mini.starter").setup()
+    end,
+  },
+  {
+    "ofirgall/goto-breakpoints.nvim",
+    lazy = true,
+  },
+  {
+    "echasnovski/mini.surround",
+    version = "*",
+    lazy = false,
+    config = function()
+      require("mini.surround").setup()
+    end,
+  },
+  {
+    "RRethy/vim-illuminate",
+    lazy = false,
+  },
+  {
+    "folke/twilight.nvim",
+    lazy = false,
+  },
+  {
     "easymotion/vim-easymotion",
     lazy = false,
   },
@@ -81,8 +116,9 @@ local plugins = {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {},
-    lazy = false,
+    lazy = true,
   },
+  -- lazy.nvim
   {
     "folke/noice.nvim",
     event = "VeryLazy",

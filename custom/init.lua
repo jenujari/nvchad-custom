@@ -6,8 +6,6 @@ autocmd("VimResized", {
   command = "tabdo wincmd =",
 })
 
-vim.cmd "set path+=**"
-vim.cmd "set nocompatible"
 vim.cmd [[
   set tabstop=2 shiftwidth=2 softtabstop=2 expandtab 
   set colorcolumn=120
@@ -23,6 +21,7 @@ vim.cmd [[
   set noswapfile
   set nobackup
   set nowritebackup
+  set nocompatible
   set autoread
   set backspace=start,eol,indent
   set mouse=a
@@ -35,7 +34,6 @@ vim.cmd [[
   set path+=**
   set termguicolors
   
-  " set cmdheight=2
   set t_Co=256
   set lz
   set autoindent          " copy indent from current line when starting a new line
@@ -44,9 +42,6 @@ vim.cmd [[
   set ut=2000
   set history=500
   set magic 
-
-  " Add a bit extra margin to the left
-  set foldcolumn=1
 
   " Show matching brackets when text indicator is over them
   set showmatch 
@@ -63,9 +58,7 @@ vim.cmd [[
   set wildignore+=**/.git/**
   set wildignore+=**/tags/**
 
-  set linespace=1
-
   if has("gui_running")
-    set guifont=CaskaydiaCove\ Nerd\ Font:h14:cANSI:qDRAFT
+    set guifont=CaskaydiaCove\ Nerd\ Font:h10:cANSI:qDRAFT
   endif 
 ]]
